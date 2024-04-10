@@ -29,7 +29,7 @@ class UserController {
             }
             
         } catch (e) {
-            res.status(500).json({msg: 'something went wrong.'})
+            res.status(500).json({msg: 'Something went wrong.'})
         }
     }
     
@@ -39,10 +39,10 @@ class UserController {
             
             //validation stage
             if(!email || !password || !username){
-                return res.json({ msg: 'all parameters are required' })
+                return res.json({ msg: 'All parameters are required' })
             }
             if(!checkEmail(email)){
-                return res.json({ msg: 'the email sent is not valid' })
+                return res.json({ msg: 'The email sent is not valid' })
             }
             const candidate = await User.findOne({where: {email}})
             if(candidate){
@@ -54,7 +54,7 @@ class UserController {
             const token = generateJwt(user.id, user.email, user.role)
             res.status(200).json({token})
         } catch (e) {
-            res.status(500).json({ msg: 'something went wrong. Сheck the type of parameters being passed' })
+            res.status(500).json({ msg: 'Something went wrong. Сheck the type of parameters being passed' })
         }
     }
 
@@ -63,10 +63,10 @@ class UserController {
             const {email, password} = req.body
             //validation stage
             if(!email || !password){
-                return res.json({ msg: 'all parameters are required' })
+                return res.json({ msg: 'All parameters are required' })
             }
             if(!checkEmail(email)){
-                return res.json({ msg: 'the email sent is not valid' })
+                return res.json({ msg: 'The email sent is not valid' })
             }
 
             const user = await User.findOne({where: {email}})
@@ -77,7 +77,7 @@ class UserController {
             const token= generateJwt(user.id, user.email, user.role)
             res.json({token})
         } catch (e) {
-            res.status(500).json({ msg: 'something went wrong. Сheck the type of parameters being passed' })
+            res.status(500).json({ msg: 'Something went wrong. Сheck the type of parameters being passed' })
         }
     }
 }
