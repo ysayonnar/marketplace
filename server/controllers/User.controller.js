@@ -49,6 +49,7 @@ class UserController {
                 return res.json({msg: 'User with this email already exists.'})
             }
 
+            
             const hasPassword = await bcrypt.hash(password, 5)
             const user = await User.create({email, password: hasPassword, username, role})
             const token = generateJwt(user.id, user.email, user.role)
