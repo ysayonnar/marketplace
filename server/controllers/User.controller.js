@@ -1,6 +1,7 @@
 const {User} = require('../models/models')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const dbError = require('../middlewares/databaseErrorHandler')
 
 const checkEmail = (email) => {
     if(!email.includes('@')){
@@ -29,7 +30,7 @@ class UserController {
             }
             
         } catch (e) {
-            res.status(500).json({msg: 'Something went wrong.'})
+            dbError(res)
         }
     }
     
@@ -55,7 +56,7 @@ class UserController {
             const token = generateJwt(user.id, user.email, user.role)
             res.status(200).json({token})
         } catch (e) {
-            res.status(500).json({ msg: 'Something went wrong. Сheck the type of parameters being passed' })
+            dbError(res)
         }
     }
 
@@ -78,7 +79,7 @@ class UserController {
             const token= generateJwt(user.id, user.email, user.role)
             res.json({token})
         } catch (e) {
-            res.status(500).json({ msg: 'Something went wrong. Сheck the type of parameters being passed' })
+            dbError(res)
         }
     }
 }

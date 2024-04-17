@@ -1,6 +1,7 @@
 const {User, Product} = require('../models/models')
 const uuid = require('uuid')
 const path = require('path');
+const dbError = require('../middlewares/databaseErrorHandler')
 
 class ProductController {
 	async getProducts(req, res) {
@@ -9,7 +10,7 @@ class ProductController {
             const products = await Product.findAll()
             res.json(products)
         } catch (e) {
-            res.status(500).json({ msg: 'Something went wrong.' })
+            dbError(res)
         }
 	}
 
@@ -20,7 +21,7 @@ class ProductController {
 			const product = await Product.findOne({ where: { id } })
 			res.json({ product })
 		} catch (e) {
-			res.status(500).json({ msg: 'Something went wrong.' })
+			dbError(res)
 		}
 	}
 
@@ -28,8 +29,13 @@ class ProductController {
 
 	async getUserProducts(req,res){
         const userId = req.user.id
-		const products = await Product.findAll({where: {userId}})
-		res.json(products)
+		try {
+			const products = await Product.findAll({where: {userId}})
+			res.json(products)
+		} catch (e) {
+			dbError(res)
+		}
+		
     }
 
 	async createProduct(req, res) {
@@ -44,7 +50,7 @@ class ProductController {
             const createdProduct = await Product.create({title, description, price, category,userId, image_url: filename})
             res.json({createdProduct})
         } catch (e) {
-            res.status(500).json({ msg: 'Something went wrong.' })
+            dbError(res)
         }
 		//закрытый доступ(с user.id)
 	}
@@ -60,7 +66,7 @@ class ProductController {
 			const updated = await Product.update({ ...req.body }, { where: {userId, id} })
 			res.json({ updated })
 		} catch (e) {
-			res.status(500).json({ msg: 'Something went wrong.' })
+			dbError(res)
 		}
 	}
 
@@ -74,7 +80,7 @@ class ProductController {
 			const deleted = await Product.destroy({ where: { id, userId } })
 			return res.json({ deleted })
 		} catch (e) {
-			res.status(500).json({ msg: 'Something went wrong.' })
+			dbError(res)
 		}
 	}
 }
