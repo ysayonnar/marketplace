@@ -50,11 +50,27 @@ class ProductController {
 	}
 
 	async updateProduct(req, res) {
-		//закрытый доступ(с user.id)
+		try {
+			if (!req.body.id) {
+				return res.send({ msg: 'empty parametrs' })
+			}
+			const id = req.body.id
+			const userId = req.user.id
+			const updated = await Product.update({ ...req.body }, { where: {userId, id} })
+			res.json({ updated })
+		} catch (e) {
+			res.status(500).json({ msg: 'Something went wrong.' })
+		}
 	}
 
 	async deleteProduct(req, res) {
-		//закрытый доступ(с user.id)
+		const userId = req.user.id
+		const id = req.body.id
+		if(!id){
+			return res.send({msg: 'id required'})
+		}
+		const deleted = await Product.destroy({where: {id, userId}})
+		return res.json({deleted})
 	}
 }
 
