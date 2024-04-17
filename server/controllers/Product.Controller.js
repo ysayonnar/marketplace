@@ -50,12 +50,13 @@ class ProductController {
 	}
 
 	async updateProduct(req, res) {
+		if (!req.body.id) {
+			return res.send({ msg: 'empty parametrs' })
+		}
+		const id = req.body.id
+		const userId = req.user.id
+
 		try {
-			if (!req.body.id) {
-				return res.send({ msg: 'empty parametrs' })
-			}
-			const id = req.body.id
-			const userId = req.user.id
 			const updated = await Product.update({ ...req.body }, { where: {userId, id} })
 			res.json({ updated })
 		} catch (e) {
@@ -69,8 +70,12 @@ class ProductController {
 		if(!id){
 			return res.send({msg: 'id required'})
 		}
-		const deleted = await Product.destroy({where: {id, userId}})
-		return res.json({deleted})
+		try {
+			const deleted = await Product.destroy({ where: { id, userId } })
+			return res.json({ deleted })
+		} catch (e) {
+			res.status(500).json({ msg: 'Something went wrong.' })
+		}
 	}
 }
 
