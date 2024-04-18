@@ -30,7 +30,7 @@ class UserController {
             }
             
         } catch (e) {
-            dbError(res)
+            dbError(res, e)
         }
     }
     
@@ -56,7 +56,7 @@ class UserController {
             const token = generateJwt(user.id, user.email, user.role)
             res.status(200).json({token})
         } catch (e) {
-            dbError(res)
+            dbError(res, e)
         }
     }
 
@@ -79,7 +79,7 @@ class UserController {
             const token= generateJwt(user.id, user.email, user.role)
             res.json({token})
         } catch (e) {
-            dbError(res)
+            dbError(res, e)
         }
     }
 }

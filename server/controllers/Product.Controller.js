@@ -10,7 +10,7 @@ class ProductController {
             const products = await Product.findAll()
             res.json(products)
         } catch (e) {
-            dbError(res)
+            dbError(res, e)
         }
 	}
 
@@ -21,7 +21,7 @@ class ProductController {
 			const product = await Product.findOne({ where: { id } })
 			res.json({ product })
 		} catch (e) {
-			dbError(res)
+			dbError(res, e)
 		}
 	}
 
@@ -33,7 +33,7 @@ class ProductController {
 			const products = await Product.findAll({where: {userId}})
 			res.json(products)
 		} catch (e) {
-			dbError(res)
+			dbError(res, e)
 		}
 		
     }
@@ -41,7 +41,6 @@ class ProductController {
 	async createProduct(req, res) {
         const {title, description, price, category} = req.body
         const userId = req.user.id
-
         const {image} = req.files
         let filename = uuid.v4() + '.jpg'
         image.mv(path.resolve(__dirname, '..', 'static', filename))
@@ -50,7 +49,7 @@ class ProductController {
             const createdProduct = await Product.create({title, description, price, category,userId, image_url: filename})
             res.json({createdProduct})
         } catch (e) {
-            dbError(res)
+            dbError(res, e)
         }
 		//закрытый доступ(с user.id)
 	}
@@ -66,7 +65,7 @@ class ProductController {
 			const updated = await Product.update({ ...req.body }, { where: {userId, id} })
 			res.json({ updated })
 		} catch (e) {
-			dbError(res)
+			dbError(res, e)
 		}
 	}
 
@@ -80,7 +79,7 @@ class ProductController {
 			const deleted = await Product.destroy({ where: { id, userId } })
 			return res.json({ deleted })
 		} catch (e) {
-			dbError(res)
+			dbError(res, e)
 		}
 	}
 }

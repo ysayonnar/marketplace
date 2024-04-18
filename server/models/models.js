@@ -30,6 +30,7 @@ const Review = sequelize.define('review', {
 	id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     title: {type: DataTypes.STRING},
     content: {type: DataTypes.STRING},
+    image_url: {type: DataTypes.STRING},
     rating: {type: DataTypes.FLOAT},
 })
 
