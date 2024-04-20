@@ -34,6 +34,16 @@ const Review = sequelize.define('review', {
     rating: {type: DataTypes.FLOAT},
 })
 
+const Basket = sequelize.define('basket', {
+	id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true }
+})
+
+User.hasMany(Basket)
+Basket.belongsTo(User)
+
+Product.hasMany(Basket)
+Basket.belongsTo(Product)
+
 User.hasMany(Order)
 Order.belongsTo(User)
 
@@ -50,5 +60,6 @@ module.exports ={
     User,
     Order,
     Product,
-    Review
+    Review,
+    Basket
 }
