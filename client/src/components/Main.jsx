@@ -1,8 +1,9 @@
+import Header from "./Header"
 
 function Main() {
     return (
-        <div>
-           
+        <div className="display">
+           <Header/>
         </div>
 )}
 
