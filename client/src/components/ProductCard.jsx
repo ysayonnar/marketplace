@@ -1,7 +1,7 @@
 function ProductCard({product}){
     return(
-        <div>
-            <h1>{product.title}</h1>
+        <div className="product_card">
+            <h1>{product.id}</h1>
         </div>
     )
 }

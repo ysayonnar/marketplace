@@ -1,0 +1,17 @@
+.myButton{
+    background: linear-gradient(to right, #db20bc, #873ACC);
+    outline: none;
+    width: 150px;
+    height: 40px;
+    font-size: 24px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    color: rgb(255, 240, 254);
+    transition: background-color 0.3s ease;
+}
+
+.myButton:hover{
+    cursor: pointer;
+    background: linear-gradient(to right, #df355a,#20afdb);
+}
