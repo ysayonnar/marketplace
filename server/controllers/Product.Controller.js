@@ -8,7 +8,7 @@ class ProductController {
 		//свободный доступ(без user.id)
 		try {
             const products = await Product.findAll()
-            res.json(products)
+            res.json({products})
         } catch (e) {
             dbError(res, e)
         }

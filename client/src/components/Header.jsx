@@ -37,9 +37,9 @@ function Header() {
 					className='ui_image'
 				/>
 			</div>
-			{isUserOpen && <h1>user</h1>}
+			{isUserOpen && <h1></h1>}
 
-			{isCartOpen && <h1>cart</h1>}
+			{isCartOpen && <h1></h1>}
 		</header>
 	)
 }
