@@ -7,10 +7,23 @@ import axios from 'axios'
 function Main() {
     const [products, setProducts] = useState([])
     const [page, setPage] = useState(1)
+    const [searchValue, setSearchValue] = useState('')
     const indexOfLastNote = page * 8
 	const indexOfFirstNote = indexOfLastNote - 8
 	const displayedProducts = products.slice(indexOfFirstNote, indexOfLastNote)
 
+    const search = (product) => {
+        const loweredTitle = product.title.toLowerCase()
+        const loweredSearch = searchValue.toLowerCase()
+
+        if(searchValue === ''){
+            return <ProductCard product={product} key={product.id} />
+        }
+        if(loweredTitle.includes(loweredSearch)){
+            return <ProductCard product={product} key={product.id} />
+        }
+    }
+    
     const prevHandle = () =>{
         if(page === 1){
             return
@@ -44,19 +57,18 @@ function Main() {
     return (
 			<div className='display'>
 				<div className='header_wraper'>
-					<Header />
+					<Header setSearchValue={setSearchValue} searchValue={searchValue}/>
 				</div>
-				<div className='products_display'>
-					{displayedProducts.map(product => {
-						return <ProductCard product={product} key={product.id} />
-					})}
+				<div className='products_display' >
+					{products &&
+						displayedProducts.map(product => search(product))}
 				</div>
 				<div className='pagination_wrapper'>
 					<MyButton onClick={prevHandle}>Prev</MyButton>
 					<h1
 						style={{
-                            userSelect: 'none',
-                            width: '20px',
+							userSelect: 'none',
+							width: '20px',
 							color: '#2b0d22',
 						}}
 					>

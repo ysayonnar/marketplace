@@ -1,10 +1,7 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
-import ui from '../static/glass.png'
+import { useState } from "react"
 
 function ProductCard({product}){
-    const [img, setImg] = useState(null )
-    const [path, setPath] = useState(`http://localhost:3000/${product['image_url']}`)
+    const [path] = useState(`http://localhost:3000/${product['image_url']}`)
 
     return (
 			<div className='product_card'>
@@ -31,7 +28,7 @@ function ProductCard({product}){
 					<h2
 						style={{
 							margin: '5px 10px',
-							color: '#24c211',
+							color: '#9933b5',
 							opacity: '0.7',
 							fontSize: '22px',
 						}}
@@ -44,11 +41,11 @@ function ProductCard({product}){
 							color: 'gray',
 							opacity: '0.7',
 							fontSize: '20px',
-                            textDecoration: 'line-through',
-                            textDecorationThickness: '2px'
+							textDecoration: 'line-through',
+							textDecorationThickness: '2px',
 						}}
 					>
-						{Math.floor(product.price * 0.75)} BYN
+						{Math.floor(product.price * 1.2)} BYN
 					</h2>
 				</div>
 			</div>

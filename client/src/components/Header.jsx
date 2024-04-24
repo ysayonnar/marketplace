@@ -4,7 +4,7 @@ import Search from '../UI/Search/Search'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
-function Header() {
+function Header({ searchValue, setSearchValue }) {
 	const nav = useNavigate()
 	const [isUserOpen, setIsUserOpen] = useState(false)
 	const [isCartOpen, setIsCartOpen] = useState(false)
@@ -18,13 +18,20 @@ function Header() {
 					margin: '30px 30px',
 					width: '250px',
 					userSelect: 'none',
-					cursor: 'pointer'
+					cursor: 'pointer',
 				}}
 				onClick={() => nav('/')}
 			>
 				Marketplace
 			</h1>
-			<Search placeholder='Search...' style={{margin: 'auto'}} />
+			<Search
+				value={searchValue}
+				onChange={e => {
+					setSearchValue(e.target.value)
+				}}
+				placeholder='Search...'
+				style={{ margin: 'auto' }}
+			/>
 			<div className='images_block'>
 				<img
 					src={people}
