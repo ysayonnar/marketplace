@@ -1,0 +1,33 @@
+.modal{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transform: scale(0);
+}
+
+.modal.active{
+    transform: scale(1);
+}
+
+.modal__content{
+    padding: 20px;
+    border-radius: 12px;
+    background-color: white;
+    /* height: 600px;
+    width: 800px; */
+}
+
+.userButtons{
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
