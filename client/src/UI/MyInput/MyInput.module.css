@@ -1,0 +1,18 @@
+.myInput{
+    height: 40px;
+    width: 300px;
+    outline: none;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 0 10px;
+    border: 2px solid rgb(201, 201, 201);
+    background-color: aliceblue;
+    border-radius: 10px;
+    transition: all ease 0.3s;
+    margin: 5px;
+}
+
+.myInput:focus{
+    border: 2px solid rgb(153, 0, 184);
+    background-color: rgb(254, 240, 255);
+}

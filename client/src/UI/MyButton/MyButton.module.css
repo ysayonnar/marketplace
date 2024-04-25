@@ -8,10 +8,11 @@
     border-radius: 10px;
     font-weight: 700;
     color: rgb(255, 240, 254);
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .myButton:hover{
     cursor: pointer;
-    background: linear-gradient(to right, #df355a,#20afdb);
+    /* background: linear-gradient(to right, #df355a,#20afdb); */
+    opacity: 0.85;
 }
