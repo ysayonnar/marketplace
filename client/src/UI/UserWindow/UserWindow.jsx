@@ -17,6 +17,9 @@ function UserWindow({active, setActive}){
         e.preventDefault()
         const user = {regEmail, regName, regPassword}
         console.log(user);
+        setRegEmail('')
+        setRegName('')
+        setRegPassword('')
     }
 
     useEffect(() =>{
