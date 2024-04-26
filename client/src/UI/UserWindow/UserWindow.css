@@ -54,3 +54,17 @@
 }
 
 
+.user__info{
+    padding: 10px;
+}
+
+.user__info h1{
+    margin: 5px auto;
+    color: rebeccapurple;
+}
+
+.user__info h3{
+    margin: 5px auto;
+}
+
+

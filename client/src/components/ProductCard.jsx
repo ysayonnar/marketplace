@@ -30,7 +30,7 @@ function ProductCard({product}){
 							margin: '5px 10px',
 							color: '#9933b5',
 							opacity: '0.7',
-							fontSize: '22px',
+							fontSize: '20px',
 						}}
 					>
 						{product.price} BYN
@@ -40,7 +40,7 @@ function ProductCard({product}){
 							margin: '6px 10px',
 							color: 'gray',
 							opacity: '0.7',
-							fontSize: '20px',
+							fontSize: '18px',
 							textDecoration: 'line-through',
 							textDecorationThickness: '2px',
 						}}

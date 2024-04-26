@@ -11,8 +11,8 @@ const checkEmail = (email) => {
     }
 }
 
-const generateJwt = (id, email, role) => {
-    return jwt.sign({id, email, role}, process.env.SECRET_KEY,{
+const generateJwt = (id, email, role, username) => {
+    return jwt.sign({id, email, role, username}, process.env.SECRET_KEY,{
         expiresIn: '24h'
     })
 }
@@ -49,12 +49,10 @@ class UserController {
             if(candidate){
                 return res.json({msg: 'User with this email already exists.'})
             }
-
-            
             const hasPassword = await bcrypt.hash(password, 5)
             const user = await User.create({email, password: hasPassword, username, role})
-            const token = generateJwt(user.id, user.email, user.role)
-            res.status(200).json({token})
+            const token = generateJwt(user.id, user.email, user.role, user.username)
+            res.status(200).json({ token, msg: 'Successfully registered' })
         } catch (e) {
             dbError(res, e)
         }
@@ -76,11 +74,17 @@ class UserController {
             if(!comparePassword){
                 return res.json({ msg: 'Incorrect password' })
             }
-            const token= generateJwt(user.id, user.email, user.role)
+            const token= generateJwt(user.id, user.email, user.role, user.username)
             res.json({token})
         } catch (e) {
             dbError(res, e)
         }
+    }
+
+
+    async auth(req,res){
+        const user = req.user
+        res.json({user})
     }
 }
 
