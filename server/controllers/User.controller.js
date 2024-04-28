@@ -70,12 +70,15 @@ class UserController {
             }
 
             const user = await User.findOne({where: {email}})
+            if(!user){
+                return res.json({msg: 'No user with such email'})
+            }
             const comparePassword = bcrypt.compareSync(password, user.password)
             if(!comparePassword){
                 return res.json({ msg: 'Incorrect password' })
             }
             const token= generateJwt(user.id, user.email, user.role, user.username)
-            res.json({token})
+            res.json({ token, msg: 'Successfully authorized' })
         } catch (e) {
             dbError(res, e)
         }
