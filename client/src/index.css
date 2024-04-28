@@ -34,6 +34,9 @@ html, body {
     background: linear-gradient(to right, #db20bc, #873ACC);
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+    position: fixed;
+    top: 0;
+    z-index: 9;
 }
 
 .images_block{
@@ -59,10 +62,11 @@ html, body {
     width: 65%;
     height: 750px;
     margin: 10px auto;
+    margin-top: 120px;
     border-radius: 20px;
     display: grid;
     grid-template-columns: repeat(4, 300px); /* Три колонки с равными долями ширины */
-    grid-template-rows: repeat(2, 360px);
+    grid-template-rows: repeat(10, 360px);
     grid-gap: 10px; /* Расстояние между элементами */
 }
 
@@ -96,4 +100,11 @@ html, body {
     height: 210px;
     border: 1px solid rgb(255, 252, 247);
     border-radius: 10px;
+}
+
+.no-elements{
+    font-size: 40px;
+    position: fixed;
+    top: 20%;
+    left: 40%;
 }
