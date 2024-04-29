@@ -5,7 +5,7 @@ import UserWindow from '../UI/UserWindow/UserWindow'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
-function Header({ searchValue, setSearchValue }) {
+function Header({ searchValue, setSearchValue, nosearch }) {
 	const nav = useNavigate()
 	const [isUserOpen, setIsUserOpen] = useState(false)
 	const [isCartOpen, setIsCartOpen] = useState(false)
@@ -27,14 +27,16 @@ function Header({ searchValue, setSearchValue }) {
 				>
 					Marketplace
 				</h1>
-				<Search
-					value={searchValue}
-					onChange={e => {
-						setSearchValue(e.target.value)
-					}}
-					placeholder='Search...'
-					style={{ margin: 'auto' }}
-				/>
+				{!nosearch && (
+					<Search
+						value={searchValue}
+						onChange={e => {
+							setSearchValue(e.target.value)
+						}}
+						placeholder='Search...'
+						style={{ margin: 'auto' }}
+					/>
+				)}
 				<div className='images_block'>
 					<img
 						src={people}
@@ -47,9 +49,7 @@ function Header({ searchValue, setSearchValue }) {
 						className='ui_image'
 					/>
 				</div>
-				{isUserOpen && <h1></h1>}
-
-				{isCartOpen && <h1></h1>}
+				
 			</header>
 			<UserWindow active={userModalActive} setActive={setUserModalActive} />
 		</>

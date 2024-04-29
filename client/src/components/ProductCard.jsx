@@ -1,10 +1,16 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 function ProductCard({product}){
     const [path] = useState(`http://localhost:3000/${product['image_url']}`)
+	const navigator = useNavigate()
+
+	const handleClick = () => {
+		navigator(`/product/${product.id}`)
+	}
 
     return (
-			<div className='product_card'>
+			<div className='product_card' onClick={handleClick}>
 				<img className='product_image' src={path} alt='' />
 				<h4
 					style={{

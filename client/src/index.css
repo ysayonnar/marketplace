@@ -108,3 +108,65 @@ html, body {
     top: 20%;
     left: 40%;
 }
+
+.singlePage{
+    margin: 0 auto;
+    margin-top: 130px;
+    /* box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); */
+    border-radius: 20px;
+    width: 70%;
+    height: 1100px;
+}
+
+.singlePage_content{
+    display: flex;
+    width: 80%;
+    height: 600px;
+    /* background-color: red; */
+}
+
+.singlePage_image{
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    margin: 40px;
+    width: 400px;
+    height: 400px;
+    transition: all ease 0.3s;
+}
+
+.singlePage_image:hover{
+    scale: 1.1;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.singlePageInfo{
+    width: 600px;
+}
+
+.singlePageTitle{
+    font-size: 40px;
+    margin: 40px 0px;
+    margin-bottom: 10px;
+}
+
+.singlePageDescription{
+    font-size: 18px;
+}
+
+.singlePageRating{
+    color: orange;
+    margin-bottom: 10px;
+}
+
+.singlePagePrice{
+    margin: 10px 0;
+    color: #873ACC;
+}
+
+.singlePageOldPrice{
+    font-size: 28px;
+    margin: 10px 0;
+    color: gray;
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+}

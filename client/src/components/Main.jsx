@@ -35,7 +35,7 @@ function Main() {
     return (
 			<div className='display'>
 				<div className='header_wraper'>
-					<Header setSearchValue={setSearchValue} searchValue={searchValue} />
+					<Header nosearch={false} setSearchValue={setSearchValue} searchValue={searchValue} />
 				</div>
 				{products && (
 					<div className='products_display'>
