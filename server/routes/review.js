@@ -4,6 +4,7 @@ const controller = require('../controllers/Review.controller')
 const authMiddleware = require('../middlewares/authMiddleware')
 
 router.get('/all', controller.getReviews)
+router.get('/all/:id', controller.getReviewsByProductId)
 router.post('/create', authMiddleware, controller.createReview)
 router.delete('/delete', authMiddleware, controller.deleteReview)
 

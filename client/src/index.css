@@ -121,7 +121,7 @@ html, body {
 .singlePage_content{
     display: flex;
     width: 80%;
-    height: 600px;
+    height: 480px;
     /* background-color: red; */
 }
 
@@ -140,7 +140,7 @@ html, body {
 }
 
 .singlePageInfo{
-    width: 600px;
+    width: 1000px;
 }
 
 .singlePageTitle{
@@ -153,7 +153,7 @@ html, body {
     font-size: 18px;
 }
 
-.singlePageRating{
+.ratingString{
     color: orange;
     margin-bottom: 10px;
 }
@@ -169,4 +169,35 @@ html, body {
     color: gray;
     text-decoration: line-through;
     text-decoration-thickness: 2px;
+}
+
+
+.reviews_display{
+    margin: 0 auto;
+    margin-bottom: 50px;
+    width: 1200px;
+    height: 950px;
+    display: grid;
+    grid-template-columns: repeat(3, 350px); /* Три колонки с равными долями ширины */
+    grid-template-rows: repeat(10, 260px);
+    grid-gap: 75px; /* Расстояние между элементами */
+}
+
+.review_item{
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+.rating{ 
+    margin: 5px 20px;
+}
+
+.ratingImage{
+    width: 200px;
+    margin: 0 20px;
+}
+
+.ratingTitle{
+    font-weight: 300;
+    margin: 10px 22px;
 }

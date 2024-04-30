@@ -23,6 +23,19 @@ class ReviewController{
         }
     }
     
+    async getReviewsByProductId(req,res){
+        const productId = req.params.id
+        if(!productId){
+            return res.json({msg: 'product id required.'})
+        }
+        try {
+            const reviews = await Review.findAll({where: {productId}, include: [User]})
+            res.json({reviews})
+        } catch (e) {
+            dbError(res,e)
+        }
+    }
+    
     async createReview(req,res){
         //закрытый доступ
         const {title, content, productId} = req.body
