@@ -16,7 +16,7 @@ function ReviewCard({review}){
 				>
 					{review.user.username}
 				</h2>
-				<p className='ratingTitle'>{review.title}</p>
+				<p className='ratingTitle'>{review.title.slice(0, 30)}...</p>
 				<img
 					src={`http://localhost:3000/${review.image_url}`}
 					alt='No photo'

@@ -112,10 +112,10 @@ html, body {
 .singlePage{
     margin: 0 auto;
     margin-top: 130px;
+    margin-bottom: 300px;
     /* box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); */
     border-radius: 20px;
     width: 70%;
-    height: 1100px;
 }
 
 .singlePage_content{
@@ -176,10 +176,9 @@ html, body {
     margin: 0 auto;
     margin-bottom: 50px;
     width: 1200px;
-    height: 950px;
     display: grid;
     grid-template-columns: repeat(3, 350px); /* Три колонки с равными долями ширины */
-    grid-template-rows: repeat(10, 260px);
+    grid-template-rows: repeat(3, 400px);
     grid-gap: 75px; /* Расстояние между элементами */
 }
 
@@ -193,11 +192,59 @@ html, body {
 }
 
 .ratingImage{
-    width: 200px;
-    margin: 0 20px;
+    border-radius: 10px;
+    width: 220px;
+    margin: 5px 60px;
 }
 
 .ratingTitle{
-    font-weight: 300;
+    font-weight: 350;
     margin: 10px 22px;
+}
+
+.reviewForm{
+    margin: 0 auto;
+    width: 400px;
+    height: 420px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+}
+
+.drop-area{
+    margin: 0 auto;
+    width: 300px;
+    height: 100px;
+    border: 2px dashed black;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.drop-area-inactive{
+    margin: 0 auto;
+    width: 300px;
+    height: 100px;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.ratingSelect{
+    margin: 20px 70px;
+    
+}
+
+.ratingButtonSelect{
+    margin: 0 5px;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 30%;
 }
