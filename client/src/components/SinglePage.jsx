@@ -13,6 +13,7 @@ function SinglePage() {
 	const { id } = useParams()
 	const [path, setPath] = useState('')
 	const [loaded, setLoaded] = useState(false)
+	const [addedToCart, setAddedToCart] = useState(false)
 	
 	const [file, setFile] = useState()
 	const [drag, setDrag] = useState(false)
@@ -61,6 +62,21 @@ function SinglePage() {
 	const handleRatingSet = (rate,e) => {
 		e.preventDefault(e)
 		setRating(rate)
+	}
+
+	const addToCart = async(e) => {
+		e.preventDefault()
+		try {
+			const response = await axios.post(
+				`http://localhost:3000/api/basket/append/${product.id}`, {},
+				{ headers: { authorization: localStorage.getItem('authorization') } }
+			)
+			if(response.data.msg){
+				setAddedToCart(true)
+			}
+		} catch (e) {
+			console.log(e);
+		}
 	}
 
 	useEffect(() => {
@@ -118,6 +134,20 @@ function SinglePage() {
 							{Math.floor(product.price * 1.25)} BYN
 						</h3>
 					</div>
+					{addedToCart ? (
+						<MyButton
+							style={{ margin: '50px', width: '450px', background: 'green', fontSize: '20px' }}
+						>
+							Added to cart
+						</MyButton>
+					) : (
+						<MyButton
+							style={{ margin: '50px', width: '450px' }}
+							onClick={e => addToCart(e)}
+						>
+							Add to cart
+						</MyButton>
+					)}
 				</div>
 				<h1 style={{ textAlign: 'center', marginBottom: '25px' }}>
 					Leave your feedback
@@ -191,7 +221,7 @@ function SinglePage() {
 					>
 						Submit
 					</MyButton>
-					<h3 style={{textAlign: 'center'}}>{submitted && 'Submitted'}</h3>
+					<h3 style={{ textAlign: 'center' }}>{submitted && 'Submitted'}</h3>
 				</form>
 				<h1 style={{ textAlign: 'center', margin: '25px 0' }}>
 					Customer Reviews

@@ -1,4 +1,4 @@
-const {Basket} = require('../models/models')
+const {Basket, Product} = require('../models/models')
 const dbError = require('../middlewares/databaseErrorHandler')
 
 class BasketController{
@@ -7,7 +7,7 @@ class BasketController{
         const userId = req.user.id
 
         try {
-            const items = await Basket.findAll({where: {userId}})
+            const items = await Basket.findAll({where: {userId}, include: [Product]})
             res.json({items})
         } catch (e) {
             dbError(res, e)
@@ -23,7 +23,7 @@ class BasketController{
         }
         try {
             const createdItem = await Basket.create({userId, productId})
-            res.json({createdItem})
+            res.json({createdItem, msg: 'Added to cart'})
         } catch (e) {
             dbError(res, e)
         }
